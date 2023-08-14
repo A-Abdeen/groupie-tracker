@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func Relations(idNumber int) {
+func Relations(idNumber int) TmpAllConRel{
 	idNumber--
 
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/relation")
@@ -26,5 +26,5 @@ func Relations(idNumber int) {
 	if err2 != nil {
 		fmt.Print(err2)
 	}
-	// fmt.Println(individualRelations.Index[idNumber]) // XXX
+	return (individualRelations)
 }

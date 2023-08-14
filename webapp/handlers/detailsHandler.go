@@ -22,7 +22,17 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	idNumber, _ := strconv.Atoi(r.FormValue("idNumber"))
-	ArtistsDetails := API.FindArtistFullDetails(idNumber)
+	// ArtistsDetails := API.FindArtistFullDetails(idNumber)
+	// LocationsDetails := API.Locations(idNumber)
+	// DatesDetails := API.Dates(idNumber)
+	// RelationsDetails := API.Relations(idNumber)
+	// fmt.Println(LocationsDetails)
+	// fmt.Println(ArtistsDetails)
+	// fmt.Println(DatesDetails)
+	// fmt.Println(RelationsDetails)
+	var fullDetails API.WebHandler 
+	fullDetails = fullDetails.LoadDetails(idNumber)
+	fmt.Println(fullDetails)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)
@@ -30,5 +40,5 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-	t.ExecuteTemplate(w, "details.html", ArtistsDetails)
+	t.ExecuteTemplate(w, "details.html", APIcall[idNumber-1])
 }

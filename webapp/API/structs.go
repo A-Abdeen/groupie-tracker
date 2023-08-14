@@ -63,3 +63,17 @@ func (w WebHandler) PassError(x string, y int) WebHandler {
 	}
 	return errorResponse
 }
+
+func (w WebHandler) LoadDetails(id int) WebHandler {
+	fullDetails := WebHandler{
+		Artists: &Artists{
+			Id: id.Artists.Id, 
+			// Image:Artists[id].Image,
+			// Name:Artists[id].Name,   
+			// Member:Artists[id].Member, 
+			// Creationdate:Artists[id].Creationdate,      
+			// FirstAlbum:Artists[id].FirstAlbum,   
+		},
+	}
+	return fullDetails
+}
