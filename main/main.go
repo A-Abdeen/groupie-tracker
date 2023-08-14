@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Initialize html & tmpl global array for all handlers
-	if handlers.HtmlTmpl == nil {
+	if handlers.HtmlTmpl == nil || handlers.APIcall == nil {
 		handlers.Init()
 	}
 	server.Server()
