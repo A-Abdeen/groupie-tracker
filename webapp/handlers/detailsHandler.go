@@ -20,19 +20,16 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
-
 	idNumber, _ := strconv.Atoi(r.FormValue("idNumber"))
-	// ArtistsDetails := API.FindArtistFullDetails(idNumber)
-	// LocationsDetails := API.Locations(idNumber)
-	// DatesDetails := API.Dates(idNumber)
-	// RelationsDetails := API.Relations(idNumber)
-	// fmt.Println(LocationsDetails)
-	// fmt.Println(ArtistsDetails)
-	// fmt.Println(DatesDetails)
-	// fmt.Println(RelationsDetails)
-	var fullDetails API.WebHandler 
-	fullDetails = fullDetails.LoadDetails(idNumber)
-	fmt.Println(fullDetails)
+	idNumber--
+	var DisplayDetails API.DisplayDetails
+	DisplayDetails.Id = APIcall[idNumber].Id
+	DisplayDetails.Image = APIcall[idNumber].Image
+	DisplayDetails.Name = APIcall[idNumber].Name
+	DisplayDetails.Member = APIcall[idNumber].Member
+	DisplayDetails.Creationdate = APIcall[idNumber].Creationdate
+	DisplayDetails.FirstAlbum = APIcall[idNumber].FirstAlbum
+	DisplayDetails.Relations = API.Relations(idNumber)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)
@@ -40,5 +37,5 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-	t.ExecuteTemplate(w, "details.html", APIcall[idNumber-1])
+	t.ExecuteTemplate(w, "details.html", DisplayDetails)
 }

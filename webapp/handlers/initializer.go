@@ -13,7 +13,7 @@ at a global scope.
 
 var HtmlTmpl []string
 var APIcall []API.Artists
-
+var APIbase API.Artists
 func Init() {
 	fmt.Println("Initializing Global Variable") // XXX
 	HtmlTmpl = []string{
