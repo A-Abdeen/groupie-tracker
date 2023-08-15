@@ -60,7 +60,9 @@ type DisplayDetails struct {
 	Member       []string `json:"members"`
 	Creationdate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
-	Relations    TmpAllConRel
+	Relations    map[string][]string
+	Locations    []string
+	Dates        []string
 }
 
 func (w WebHandler) PassError(x string, y int) WebHandler {

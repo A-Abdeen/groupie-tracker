@@ -30,6 +30,8 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 	DisplayDetails.Creationdate = APIcall[idNumber].Creationdate
 	DisplayDetails.FirstAlbum = APIcall[idNumber].FirstAlbum
 	DisplayDetails.Relations = API.Relations(idNumber)
+	DisplayDetails.Locations = API.Locations(idNumber)
+	DisplayDetails.Dates = API.Dates(idNumber)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)

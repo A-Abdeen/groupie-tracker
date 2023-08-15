@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func Locations(idNumber int) TmpLocations{
+func Locations(idNumber int) []string{
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/locations")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -19,11 +19,11 @@ func Locations(idNumber int) TmpLocations{
 	if err != nil {
 		log.Fatal(err)
 	}
-	var individualLocations []TmpLocations
+	var individualLocations TmpLocations
 	err2 := json.Unmarshal(fullLocationspage, &individualLocations)
 	if err2 != nil {
 		fmt.Print(err2)
 	}
-	fmt.Println(individualLocations)
-	return (individualLocations[idNumber])
+	detailsPageLocations := individualLocations.Index[idNumber]
+	return (detailsPageLocations.LocationsDetailed)
 }

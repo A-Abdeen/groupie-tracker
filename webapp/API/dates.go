@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func Dates(idNumber int) TmpDates{ 
+func Dates(idNumber int) []string{ 
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/dates")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -19,10 +19,11 @@ func Dates(idNumber int) TmpDates{
 	if err != nil {
 		log.Fatal(err)
 	}
-	var individualDates []TmpDates
+	var individualDates TmpDates
 	err2 := json.Unmarshal(fullDatespage, &individualDates)
 	if err2 != nil {
 		fmt.Print(err2)
 	}
-	return individualDates[idNumber]
+	detailsPageDates := individualDates.Index[idNumber]
+	return (detailsPageDates.Dates)
 }
