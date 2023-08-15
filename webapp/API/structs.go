@@ -7,9 +7,9 @@ type Artists struct {
 	Member       []string `json:"members"`
 	Creationdate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
-	Locations    string   `json:"locations"`
-	ConcertDates string   `json:"concertDates"`
-	Relations    string   `json:"relations"`
+	Relations    map[string][]string
+	Locations    []string
+	Dates        []string
 }
 
 type TmpAllConRel struct {
@@ -53,18 +53,6 @@ type WebHandler struct {
 	*Err
 }
 
-type DisplayDetails struct {
-	Id           int      
-	Image        string   
-	Name         string
-	Member       []string `json:"members"`
-	Creationdate int      `json:"creationDate"`
-	FirstAlbum   string   `json:"firstAlbum"`
-	Relations    map[string][]string
-	Locations    []string
-	Dates        []string
-}
-
 func (w WebHandler) PassError(x string, y int) WebHandler {
 	errorResponse := WebHandler{
 		Err: &Err{
@@ -75,17 +63,3 @@ func (w WebHandler) PassError(x string, y int) WebHandler {
 	}
 	return errorResponse
 }
-
-// func (w WebHandler) LoadDetails(id int) WebHandler {
-// 	fullDetails := WebHandler{
-// 		Artists: &Artists{
-// 			Id: Artists[Id], 
-// 			// Image:Artists[id].Image,
-// 			// Name:Artists[id].Name,   
-// 			// Member:Artists[id].Member, 
-// 			// Creationdate:Artists[id].Creationdate,      
-// 			// FirstAlbum:Artists[id].FirstAlbum,   
-// 		},
-// 	}
-// 	return fullDetails
-// }

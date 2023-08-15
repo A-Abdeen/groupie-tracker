@@ -22,13 +22,8 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	idNumber, _ := strconv.Atoi(r.FormValue("idNumber"))
 	idNumber--
-	var DisplayDetails API.DisplayDetails
-	DisplayDetails.Id = APIcall[idNumber].Id
-	DisplayDetails.Image = APIcall[idNumber].Image
-	DisplayDetails.Name = APIcall[idNumber].Name
-	DisplayDetails.Member = APIcall[idNumber].Member
-	DisplayDetails.Creationdate = APIcall[idNumber].Creationdate
-	DisplayDetails.FirstAlbum = APIcall[idNumber].FirstAlbum
+	var DisplayDetails API.Artists
+	DisplayDetails = APIcall[idNumber]
 	DisplayDetails.Relations = API.Relations(idNumber)
 	DisplayDetails.Locations = API.Locations(idNumber)
 	DisplayDetails.Dates = API.Dates(idNumber)
