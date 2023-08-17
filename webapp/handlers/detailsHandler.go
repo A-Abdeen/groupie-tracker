@@ -27,6 +27,9 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 	DisplayDetails.Relations = API.Relations(idNumber)
 	DisplayDetails.Locations = API.Locations(idNumber)
 	DisplayDetails.Dates = API.Dates(idNumber)
+	fmt.Println(len(DisplayDetails.Member))
+	DisplayDetails.Member = API.Arrangestring(DisplayDetails.Member)
+	fmt.Println(DisplayDetails)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)
