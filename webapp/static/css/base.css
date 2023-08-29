@@ -64,3 +64,14 @@ a {
     font-weight: 900;
     margin-top: 10px;
 }
+
+.search button{
+    background-color: #0074D9;
+    color: #f2f2f2;
+    float: right;
+    padding: 5px 10px;
+    margin-right: 16px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+}

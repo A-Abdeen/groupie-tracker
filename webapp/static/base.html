@@ -3,6 +3,18 @@
     <head>
         <title>Groupie</title>
         <link rel="stylesheet" href="/css/base.css">
+                <div>
+                    <form class="form" method="POST" action="/search">
+                        <input type="text"
+                               placeholder=" Search Courses"
+                               name="search">
+                        <button class="search">
+                            <i class="fa fa-search"
+                            style="font-size: 18px;">
+                            </i>
+                        </button>
+                    </form>
+                </div>
     </head>
     <body>
         <div class="cool-header">
@@ -14,10 +26,12 @@
                 <div class="artist-image">
                     <img src="{{.Image}}" alt="{{.Name}}">
                 </div>
+             
                 <div class="artist-info">
                     {{.Name}}
                 </div>
-            </a>
+            </a> 
+
             {{end}}
         </div>
     </body>
