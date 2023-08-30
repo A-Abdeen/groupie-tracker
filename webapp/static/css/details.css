@@ -28,11 +28,23 @@ body {
 input[type="checkbox"] {  
   opacity: 0;
 }
-input[type="checkbox"]:checked ~ h3 ~ h5 {
+input[type="checkbox"]:hover ~ h3 ~ h5 {
 min-height: fit-content;
   align-items:baseline; 
   max-height: 2000px;
 }
+input[type="checkbox"]:checked ~ h3 ~ h5 {
+  min-height: fit-content;
+    align-items:baseline; 
+    max-height: 2000px;
+  }
+  input[type="checkbox"]:checked ~ h3 {
+    color:#44da88;
+    /* background-color:#dab744; */
+    min-height: fit-content;
+      align-items:baseline; 
+      max-height: 2000px;
+    }
 label {
   background: #282828;
   text-align: center; 
@@ -44,14 +56,11 @@ label:hover{
   color:#282828;
   background-color:#dab744;
 }
-label:active{
-  opacity: 0.5;
-  transition: 0.2s;
-}
+
 h5 {
   overflow: hidden;
   max-height: 0;
-  transition: 0.2s ease;
+  transition: 0.5s ease;
   display:inline-block;
   text-align: left;
   align-self:initial;

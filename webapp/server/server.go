@@ -16,7 +16,9 @@ func Server() {
 	http.Handle("/css/", http.StripPrefix("/css/", styles))
 	// Main Request Handlers
 	http.HandleFunc("/", handlers.BaseHandler)
+	http.HandleFunc("/search/", handlers.SearchHandler)
 	http.HandleFunc("/details/", handlers.DetailsHandler)
+	
 	// http.HandleFunc("/search/", handlers.SearchHandler)
 	// Run the server
 	fmt.Println("http://localhost" + port)

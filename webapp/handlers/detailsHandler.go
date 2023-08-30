@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"fmt"
 )
 
 func DetailsHandler(w http.ResponseWriter, r *http.Request) {
