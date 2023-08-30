@@ -23,5 +23,11 @@ func Init() {
 		// Add new html / template names here
 	}
 	fmt.Println("Global Variable initialized") // XXX
-	APIcall = API.LoadArtist()                 //used to unmarshal full data into APIcall
+	APIcall = API.LoadArtist()   //used to unmarshal full data into APIcall
+	// allLocations := API.Locations()
+	for i, _ := range APIcall {   
+	// APIcall[i].Locations = allLocations[i]
+	APIcall[i].Dates = API.Dates(i)
+	}
+	// fmt.Println(APIcall)
 }

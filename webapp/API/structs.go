@@ -7,7 +7,7 @@ type Artists struct {
 	Creationdate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
 	Relations    []string
-	Locations    []string
+	Locations    map[int][]string
 	Dates        []string
 }
 type TmpAllConRel struct {

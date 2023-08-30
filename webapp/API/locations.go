@@ -8,7 +8,10 @@ import (
 	"os"
 	"strings"
 )
-func Locations(idNumber int) []string{
+
+var allLocations map[int][]string
+
+func Locations() map[int][]string{
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/locations")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -24,13 +27,17 @@ func Locations(idNumber int) []string{
 		fmt.Print(err2)
 	}
 	var locations []string // locations created so that to be able to add indivitualLocations to DisplayDetails 
-	detailsPageLocations := individualLocations.Index[idNumber]
-	for _, data := range detailsPageLocations.LocationsDetailed {
+	
+	detailsPageLocations := individualLocations.Index
+	for i, indiv := range detailsPageLocations {
+	for _, data := range indiv.LocationsDetailed {
 		data = strings.ReplaceAll(data, "-", ", ")
 		data = strings.ReplaceAll(data, "_", " ")
 		data = strings.Title(data)
 		locations = append(locations, data)
 	}
-	return (locations)
+	allLocations[i] = locations
 }
-
+fmt.Println(allLocations)
+return (allLocations)
+}

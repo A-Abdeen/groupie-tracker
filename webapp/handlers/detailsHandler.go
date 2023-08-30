@@ -28,7 +28,7 @@ func DetailsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	idNumber--                                                       // since the index starts from 0 and the id starts from 1, it needs to be adjusted to match
 	DisplayDetails := APIcall[idNumber]                              // the unmarshalled APIcall of type []Artists can be indexed which defines DisplayDetails as type Artists
-	DisplayDetails.Locations = API.Locations(idNumber)               // since Locations in APIcall is only a URL Locations should be called seperately
+	DisplayDetails.Locations= API.Locations()               // since Locations in APIcall is only a URL Locations should be called seperately
 	DisplayDetails.Dates = API.Dates(idNumber)                       // since Dates in APIcall is only a URL Locations should be called seperately
 	DisplayDetails.Relations = API.Relations(idNumber)               // since Relations in APIcall is only a URL Locations should be called seperately
 	DisplayDetails.Member = API.Arrangestring(DisplayDetails.Member) // arrange string created to be able to present the members better
