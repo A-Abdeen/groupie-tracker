@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 )
-func Relations(idNumber int) []string {
+func Relations() map[int][]string {
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/relation")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -26,8 +26,10 @@ func Relations(idNumber int) []string {
 	if err2 != nil {
 		fmt.Print(err2)
 	}
-	detailsPageRelations := individualRelations.Index[idNumber]
-	for idx, data := range detailsPageRelations.Relation { // since detailsPageRelations is a map idx is the location and data is the dates for each location
+	detailsPageRelations := individualRelations.Index
+	allRelations := make(map[int][]string, len(detailsPageRelations))
+	for i, Relationdetails := range detailsPageRelations {
+	for idx, data := range Relationdetails.Relation{ // since detailsPageRelations is a map idx is the location and data is the dates for each location
 		for idx, i := range data { // i represents each single date and idx is its index
 			if idx == 0 {
 				dates = dates + i  // the array of dates is converted to a string with the dates seperated by a coma
@@ -41,6 +43,11 @@ func Relations(idNumber int) []string {
  		oneDateandLocation = idx + ": " + dates
 		dateAndLocation = append(dateAndLocation, oneDateandLocation) // the dates and locations are appended into a single array of string
 		dates = ""
+	}	
+		allRelations[i] = dateAndLocation
+		dateAndLocation = []string{}
 	}
-	return (dateAndLocation)
+	
+return allRelations
 }
+

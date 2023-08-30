@@ -7,7 +7,8 @@ import (
 	"net/http"
 	"os"
 )
-func Dates(idNumber int) []string{ 
+var allDates map[int][]string
+func Dates() map[int][]string{ 
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/dates")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -22,6 +23,15 @@ func Dates(idNumber int) []string{
 	if err2 != nil {
 		fmt.Print(err2)
 	}
-	detailsPageDates := individualDates.Index[idNumber]
-	return (detailsPageDates.Dates)
+	var dates []string
+	detailsPageDates := individualDates.Index
+	allDates := make(map[int][]string, len(detailsPageDates))
+	for i, indiv := range detailsPageDates {
+		for _, data := range indiv.Dates {
+			dates = append(dates, data)
+		}
+		allDates[i] = dates
+		dates = []string{}
+		}
+		return allDates
 }

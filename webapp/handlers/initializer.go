@@ -24,10 +24,12 @@ func Init() {
 	}
 	fmt.Println("Global Variable initialized") // XXX
 	APIcall = API.LoadArtist()   //used to unmarshal full data into APIcall
-	// allLocations := API.Locations()
+	allLocations := API.Locations()
+	allDates := API.Dates()
+	allRelations := API.Relations()
 	for i, _ := range APIcall {   
-	// APIcall[i].Locations = allLocations[i]
-	APIcall[i].Dates = API.Dates(i)
+	APIcall[i].Locations = allLocations[i]
+	APIcall[i].Dates = allDates[i]
+	APIcall[i].Relations = allRelations[i]
 	}
-	// fmt.Println(APIcall)
 }

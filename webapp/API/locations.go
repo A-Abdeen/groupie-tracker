@@ -9,8 +9,6 @@ import (
 	"strings"
 )
 
-var allLocations map[int][]string
-
 func Locations() map[int][]string{
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/locations")
 	if err != nil {
@@ -27,8 +25,8 @@ func Locations() map[int][]string{
 		fmt.Print(err2)
 	}
 	var locations []string // locations created so that to be able to add indivitualLocations to DisplayDetails 
-	
 	detailsPageLocations := individualLocations.Index
+	allLocations := make(map[int][]string, len(detailsPageLocations))
 	for i, indiv := range detailsPageLocations {
 	for _, data := range indiv.LocationsDetailed {
 		data = strings.ReplaceAll(data, "-", ", ")
@@ -37,7 +35,9 @@ func Locations() map[int][]string{
 		locations = append(locations, data)
 	}
 	allLocations[i] = locations
-}
-fmt.Println(allLocations)
+	locations = []string{}
+	}
+
+// fmt.Println(allLocations)
 return (allLocations)
 }
