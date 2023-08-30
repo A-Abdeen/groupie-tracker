@@ -1,4 +1,5 @@
 package gt
+
 type Artists struct {
 	Id           int      `json:"id"`
 	Image        string   `json:"image"`
@@ -31,6 +32,7 @@ type Err struct {
 	Msg        string
 	StatusCode int
 }
+
 /*
 	Below struct is known as struct composition
 	(or struct embedding)
@@ -45,6 +47,7 @@ type WebHandler struct {
 	Relations *TmpAllConRel
 	*Err
 }
+
 func (w WebHandler) PassError(x string, y int) WebHandler {
 	errorResponse := WebHandler{
 		Err: &Err{

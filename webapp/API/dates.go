@@ -1,4 +1,5 @@
 package gt
+
 import (
 	"encoding/json"
 	"fmt"
@@ -7,8 +8,10 @@ import (
 	"net/http"
 	"os"
 )
+
 var allDates map[int][]string
-func Dates() map[int][]string{ 
+
+func Dates() map[int][]string {
 	fullJso, err := http.Get("https://groupietrackers.herokuapp.com/api/dates")
 	if err != nil {
 		fmt.Print(err.Error())
@@ -32,6 +35,6 @@ func Dates() map[int][]string{
 		}
 		allDates[i] = dates
 		dates = []string{}
-		}
-		return allDates
+	}
+	return allDates
 }
