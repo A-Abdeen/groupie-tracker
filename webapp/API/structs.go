@@ -10,6 +10,7 @@ type Artists struct {
 	Relations    []string
 	Locations    []string
 	Dates        []string
+	SearchResult string
 }
 type TmpAllConRel struct {
 	Index []struct {
@@ -46,12 +47,6 @@ type WebHandler struct {
 	Dates     *TmpDates
 	Relations *TmpAllConRel
 	*Err
-}
-
-type SearchReturn struct {
-	Name         string
-	Image        string
-	DataSearched string
 }
 
 func (w WebHandler) PassError(x string, y int) WebHandler {

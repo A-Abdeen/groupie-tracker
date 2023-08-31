@@ -10,8 +10,7 @@
             <h1>Groupie Tracker</h1>
         </div>
            <div class="box">
-            <form class="form" method="POST" action="/search">
-                
+            <form class="form" method="GET" action="/search">  
              <input type="text" name="search" placeholder="Type to search.." id="search">
              <button type="submit"><i class="fa fa-search">search</i></button></form>
                 </div>
@@ -25,8 +24,9 @@
                 <div class="artist-info">
                     {{.Name}}
                 </div>
+              
             </a> 
-
+  {{.SearchResult}}
             {{end}}
         </div>
     </body>
