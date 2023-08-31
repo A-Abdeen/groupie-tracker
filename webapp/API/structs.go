@@ -34,11 +34,11 @@ type Err struct {
 }
 
 /*
-	Below struct is known as struct composition
-	(or struct embedding)
-	Allows using single struct to access all resources
-	Checkout PassError method below
-	Next step: adding stuct methods for specific handlers
+Below struct is known as struct composition
+(or struct embedding)
+Allows using single struct to access all resources
+Checkout PassError method below
+Next step: adding stuct methods for specific handlers
 */
 type WebHandler struct {
 	*Artists
@@ -46,6 +46,12 @@ type WebHandler struct {
 	Dates     *TmpDates
 	Relations *TmpAllConRel
 	*Err
+}
+
+type SearchReturn struct {
+	Name         string
+	Image        string
+	DataSearched string
 }
 
 func (w WebHandler) PassError(x string, y int) WebHandler {
