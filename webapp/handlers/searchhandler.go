@@ -2,7 +2,7 @@ package gt
 
 import (
 	// "fmt"
-	// API "gt/webapp/API"
+	API "gt/webapp/API"
 	"html/template"
 	"net/http"
 	// "strings"
@@ -20,7 +20,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	typedData := r.FormValue("search")
-	dataToReturn := Tosearch(typedData)
+	dataToReturn := API.Tosearch(typedData, APIcall)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)

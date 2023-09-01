@@ -1,14 +1,14 @@
 package gt
 
 import (
-	API "gt/webapp/API"
+	// handlers "gt/webapp/handlers"
 	"strings"
 )
 
-func Tosearch(typedData string) []API.Artists {
-	typedDataInt := API.Atoi(typedData)
+func Tosearch(typedData string, APIcall []Artists) []Artists {
+	typedDataInt := Atoi(typedData)
 	typedData = strings.ToUpper(typedData)
-	var dataToReturn []API.Artists
+	var dataToReturn []Artists
 	var toDisplay string
 	ifMatching := false  
 	for i, oneArtist := range APIcall {
@@ -26,7 +26,7 @@ func Tosearch(typedData string) []API.Artists {
 			toDisplay = "Search matches creation date " + typedData
 			ifMatching = true
 		}
-		firstAlbum := API.Atoi(oneArtist.FirstAlbum)
+		firstAlbum := Atoi(oneArtist.FirstAlbum)
 		if typedDataInt == firstAlbum {
 			toDisplay = "Search matches First Album date " + typedData
 			ifMatching = true
@@ -38,7 +38,7 @@ func Tosearch(typedData string) []API.Artists {
 			}
 		}
 		for _, oneDate := range oneArtist.Dates {
-			oneDateInt := API.Atoi(oneDate)
+			oneDateInt := Atoi(oneDate)
 			if oneDateInt == typedDataInt {
 				toDisplay = "Search matches Date " + oneDate
 				ifMatching = true

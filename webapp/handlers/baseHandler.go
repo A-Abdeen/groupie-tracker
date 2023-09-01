@@ -4,6 +4,7 @@ import (
 	// API "gt/webapp/API"
 	"html/template"
 	"net/http"
+	// "fmt"
 )
 
 func BaseHandler(w http.ResponseWriter, r *http.Request) {
@@ -18,6 +19,8 @@ func BaseHandler(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
+	// typedData := r.FormValue("search")
+    // API.SuggestionBox(typedData, APIcall)
 	t, err := template.ParseFiles(HtmlTmpl...)
 	if err != nil {
 		ErrorHandler(w, r, http.StatusInternalServerError)
