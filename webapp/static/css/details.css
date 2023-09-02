@@ -30,7 +30,6 @@ input[type="checkbox"] {
 }
 input[type="checkbox"]:hover ~ h3 ~ h5 {
 min-height: fit-content;
-  align-items:baseline; 
   max-height: 2000px;
 }
 input[type="checkbox"]:checked ~ h3 ~ h5 {
@@ -56,9 +55,7 @@ label {
 label:hover{
   color:#282828;
   background-color:#dab744;
-}
-input[type="checkbox"]:checked ~ h3 ~ label {
-  background-color: #ff0000;
+  
 }
 h5 {
   overflow: hidden;

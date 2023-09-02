@@ -109,5 +109,9 @@ button:hover{
 .artists-container .searchresult{
     font-size: 24px;
     font-weight: 600;
-    width: 100px;
-  }
+    width: auto;
+    max-width: 200px;  }
+.datalist{
+    overflow: scroll;
+    max-height: 0;
+}
