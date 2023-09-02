@@ -32,6 +32,8 @@ func Tosearch(typedData string, APIcall []Artists) []Artists {
 			ifMatching = true
 		}
 		for _, oneLocation := range oneArtist.Locations {
+			typedData = strings.ReplaceAll(typedData, "-", ", ")
+			typedData = strings.ReplaceAll(typedData, "_", " ")
 			if strings.ToUpper(oneLocation) == typedData {
 				toDisplay = "Search matches Location " + oneLocation
 				ifMatching = true			

@@ -65,7 +65,8 @@ h5 {
   max-height: 0;
   transition: 0.5s ease;
   display:inline-block;
-  text-align: left;
+  text-align: center;
   align-self:initial;
   line-height: 1.5em;
+  width: 800px;
 }

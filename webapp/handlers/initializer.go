@@ -20,7 +20,6 @@ func Init() {
 		"../webapp/static/base.html",
 		"../webapp/static/details.html",
 		"../webapp/static/error.html",
-		"../webapp/static/search.html",
 		// Add new html / template names here
 	}
 	fmt.Println("Global Variable initialized") // XXX

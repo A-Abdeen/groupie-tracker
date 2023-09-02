@@ -106,3 +106,8 @@ button:hover{
     background-color:#dab744;
     color: #686868;    
 }
+.artists-container .searchresult{
+    font-size: 24px;
+    font-weight: 600;
+    width: 100px;
+  }

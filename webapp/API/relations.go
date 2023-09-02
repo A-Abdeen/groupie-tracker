@@ -34,7 +34,7 @@ func Relations() map[int][]string {
 		for idx, data := range Relationdetails.Relation { // since detailsPageRelations is a map idx is the location and data is the dates for each location
 			for idx, i := range data { // i represents each single date and idx is its index
 				if idx == 0 {
-					dates = dates + i // the array of dates is converted to a string with the dates seperated by a coma
+					dates = dates  + i // the array of dates is converted to a string with the dates seperated by a coma
 				} else {
 					dates = i + ", " + dates
 				}
